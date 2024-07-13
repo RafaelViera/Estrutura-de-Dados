@@ -6,7 +6,7 @@ class ListaDuplamente:
         self.head = NoDuplo()
         self.tail = NoDuplo()
         self.head.prox = self.tail
-        self.tail.ant = self.head
+        self.tail.ant = self.head   
 
     def inserir(self, dado):
         NoNovo = NoDuplo(dado)
