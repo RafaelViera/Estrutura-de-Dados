@@ -10,10 +10,11 @@ class ListaDuplamente:
 
     def inserir(self, dado):
         NoNovo = NoDuplo(dado)
-        NoNovo.ant = self.head
+        p = self.tail.ant         # acho que fazer "self.tail.prox.ant = NoNovo" funcionaria
+        p.prox = NoNovo           # mas coloquei um ponteiro pra ter certeza
+        self.tail.ant = NoNovo  
+        NoNovo.ant = p
         NoNovo.prox = self.tail
-        self.head.prox = NoNovo
-        self.tail.ant = NoNovo
         
     def consulta():
         pass
