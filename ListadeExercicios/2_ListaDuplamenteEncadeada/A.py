@@ -3,7 +3,7 @@
 
 def menorElemento(self):
     if (self.head.prox == self.tail):
-        return ("A lista esta vazia")
+        return (0)
     p = self.head.prox
     menor = self.head.prox.chave
     while (p):

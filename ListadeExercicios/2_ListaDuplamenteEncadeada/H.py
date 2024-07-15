@@ -11,4 +11,5 @@ def retirarElementosIguais(self, x):
             p.prox.ant = p.ant
             p.prox = None
             p.ant = None
+        p = p.prox
     return True

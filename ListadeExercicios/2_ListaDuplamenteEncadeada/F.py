@@ -13,3 +13,4 @@ def removerElemento(self, k_esimo):
             p.ant = None
             return True
         p = p.prox
+    return False
