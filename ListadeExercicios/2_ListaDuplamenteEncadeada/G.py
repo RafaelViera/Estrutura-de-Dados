@@ -1,11 +1,10 @@
 # Retire o elemento de maior valor da lista
 
 def removerMaiorElemento(self):
-    if (self.head.prox == self.tail):
+    if (self.prim == None):
         return False
-    p = self.head.prox
-    pMaior = self.head.prox
-    maior = self.head.prox.chave
+    p, pMaior = self.prim
+    maior = self.prim.chave
     while (p):
         if (p.chave > maior):
             maior = p.chave
@@ -15,4 +14,5 @@ def removerMaiorElemento(self):
     pMaior.prox.ant = pMaior.ant
     pMaior.prox = None
     pMaior.ant = None
+    self.nelems -= 1
     return True

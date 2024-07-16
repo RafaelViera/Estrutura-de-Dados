@@ -2,9 +2,9 @@
 
 def media(self):
     soma, media, cont = 0
-    if (self.head.prox == self.tail):
+    if (self.prim == None):
         return media
-    p = self.head.prox
+    p = self.prim
     while (p):
         soma += p.chave
         cont += 1

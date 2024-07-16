@@ -2,12 +2,12 @@
 # indicacao de que a lista esta vazia.
 
 def menorElemento(self):
-    if (self.head.prox == self.tail):
-        return (0)
-    p = self.head.prox
-    menor = self.head.prox.chave
+    if (self.prim == None):
+        return -1
+    p = p.prim
+    menor = p.prim.chave
     while (p):
-        if (menor > p.chave):
+        if (p.chave < menor):
             menor = p.chave
         p = p.prox
     return menor

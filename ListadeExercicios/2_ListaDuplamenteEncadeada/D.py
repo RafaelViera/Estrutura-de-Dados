@@ -2,9 +2,9 @@
 
 def somaTotal(self):
     soma = 0
-    if (self.head.prox == self.tail):
+    if (self.prim == None):
         return 0
-    p = self.head.prox
+    p = self.prim
     while (p):
         soma += p.chave
         p = p.prox
