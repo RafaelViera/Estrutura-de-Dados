@@ -67,28 +67,91 @@ class TabelaHash:
                 
         print(f"palavra inexistente: {palavra}")
         
-   # 5 - "r" ESTA COM ERRO NA LINHA DE REMOVER
+    # 3 - "f" FEITO
+    def maisConsultada(self):
+        # Verifica se a lista esta vazia
+        if (self.numElementos == 0):
+            print("tabela vazia")
+            return
+        
+        # Mais consultadas
+        palavrasMaisConsultadas = []
+        maiorNumConsulta = 0
+        for lista in self.tabelaInterna:
+            for elemento in lista:
+                if (elemento.numConsultas > maiorNumConsulta):
+                    palavrasMaisConsultadas = []
+                    palavrasMaisConsultadas.append(elemento.chave)
+                    maiorNumConsulta = elemento.numConsultas
+                elif (elemento.numConsultas == maiorNumConsulta):
+                    palavrasMaisConsultadas.append(elemento.chave)
+
+        # Quando saiu dos loop's temos a lista com as palavras mais consultadas
+        palavrasMaisConsultadas.sort()
+        for palavra in palavrasMaisConsultadas:
+            print(palavra)
+        print(f"numero de acessos: {maiorNumConsulta}")
+        
+    # 4 - "o" ERRO AINDA NÃO CONSTA O L2
+    def imprimirOrdemAlfabetica(self, l1, l2):
+        # Coleta todas as palavras da tabela
+        palavrasFiltradas = []
+        for lista in self.tabelaInterna:
+            palavrasFiltradas.extend(lista)
+
+        # Filtra palavras que começam com letras entre l1 e l2, inclusive
+        palavras_selecionadas = [palavra for palavra in palavrasFiltradas if l1 <= palavra.chave <= l2]
+        
+        print(f"palavras em ordem: ")
+        if palavras_selecionadas:
+            for palavra in palavras_selecionadas:
+                print(palavra.chave)
+        else:
+            print("lista vazia")
+                    
+    # 5 - "r" ESTA COM ERRO NA LINHA DE REMOVER
     def remover(self, palavra):
         indiceRemover = self.funcaoH(palavra)
         
         for elemento in self.tabelaInterna[indiceRemover]:
             if elemento.chave == palavra:
-                self.tabelaInterna.remove(indiceRemover)
+                self.tabelaInterna[indiceRemover].remove(indiceRemover)
                 self.numElementos -= 1
                 print(f"palavra removida: {palavra}")
                 return
         
         print(f"palavra inexistente: {palavra}")
-
-    # 6 - "n"
-    def imprimirLista(self, n):
-        print(f"palavras na entrada: {n}")
-        if (len(self.tabelaInterna[n-1]) != 0):
-            for elemento in self.tabelaInterna[n-1]:
-                self.tabelaInterna[n-1].sort()
-                print(elemento.chave)
-        print(f"nao ha palavras na lista de indice: {n}")
     
-    # 7 - "p"
-    def imprimir(self):
-        pass
+    # 5 - "r" ESTA COM ERRO 
+    def removerPalavra(self, palavra):
+        indice = self.funcaoH(palavra)
+
+        if palavra in self.tabelaInterna[indice]:
+            self.tabelaInterna[indice].remove(palavra)
+            print(f'palavra removida: {palavra}')
+            self.numElementos -= 1 
+        else:
+            print(f'palavra inexistente: {palavra}')
+
+    # 6 - "n" FEITO
+    def imprimirLista(self, n):
+        palavras = self.tabelaInterna[n]
+        
+        if palavras:
+            print(f"palavras na entrada: {n}")
+            palavrasOrdenadas = sorted(elemento.chave for elemento in palavras)
+            for palavra in palavrasOrdenadas:
+                print(palavra)
+        else:
+            print(f"nao ha palavras na lista de indice: {n}")
+    
+    # 7 - "p" FEITO
+    def imprimirTabela(self):
+        for i in range(self.tamanhoTabela):
+            print(f"{i}: ", end="")  
+            palavras = self.tabelaInterna[i]
+           
+            palavrasOrdenadas = sorted(palavras, key=lambda x: x.chave)
+            for elemento in palavrasOrdenadas:
+                print(f"{elemento.chave} {elemento.numConsultas} ", end="")
+            print()  # Nova linha para o próximo índice
