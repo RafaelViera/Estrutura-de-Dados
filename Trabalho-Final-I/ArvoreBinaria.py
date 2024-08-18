@@ -146,48 +146,6 @@ class ArvoreBinaria:
                     print(f"palavra removida: {palavra}")
         else:
             print(f"palavra inexistente: {palavra}")
-            
-            
-    def remove_palavra(self, palavra):
-        pai = None
-        atual = self.raiz
-        while atual:
-            if palavra < atual.palavra:
-                pai = atual
-                atual = atual.esquerda
-            elif palavra > atual.palavra:
-                pai = atual
-                atual = atual.direita
-            else:
-                if atual.esquerda is None:
-                    if pai is None:
-                        atual = atual.direita
-                    elif atual == pai.esquerda:
-                        pai.esquerda = atual.direita
-                    else:
-                        pai.direita = atual.direita
-                elif atual.direita is None:
-                if pai is None:
-                    atual = atual.esquerda
-                elif atual == pai.esquerda:
-                    pai.esquerda = atual.esquerda
-                else:
-                    pai.direita = atual.esquerda
-                else:
-                pai_menor = atual
-                menor = atual.direita
-                while menor.esquerda:
-                    pai_menor = menor
-                    menor = menor.esquerda
-                atual.palavra = menor.palavra
-                if menor == pai_menor.esquerda:
-                    pai_menor.esquerda = menor.direita
-                else:
-                    pai_menor.direita = menor.direita
-                print(f"palavra removida: {palavra}")
-                return atual
-        print(f"palavra inexistente: {palavra}")
-        return atual
 
     def min(self, node=None):
         if node == None:

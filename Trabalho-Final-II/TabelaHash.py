@@ -92,7 +92,7 @@ class TabelaHash:
             print(palavra)
         print(f"numero de acessos: {maiorNumConsulta}")
         
-    # 4 - "o" ERRO AINDA NÃO CONSTA O L2
+    # 4 - "o" FEITO
     def imprimirOrdemAlfabetica(self, l1, l2):
         # Coleta todas as palavras da tabela
         palavrasFiltradas = []
@@ -100,11 +100,11 @@ class TabelaHash:
             palavrasFiltradas.extend(lista)
 
         # Filtra palavras que começam com letras entre l1 e l2, inclusive
-        palavras_selecionadas = [palavra for palavra in palavrasFiltradas if l1 <= palavra.chave <= l2]
+        palavrasSelecionadas = [palavra for palavra in palavrasFiltradas if (l1 <= palavra.chave <= l2) or (l1 == palavra.chave[0] or l2 == palavra.chave[0])]
         
         print(f"palavras em ordem: ")
-        if palavras_selecionadas:
-            for palavra in palavras_selecionadas:
+        if palavrasSelecionadas:
+            for palavra in palavrasSelecionadas:
                 print(palavra.chave)
         else:
             print("lista vazia")
