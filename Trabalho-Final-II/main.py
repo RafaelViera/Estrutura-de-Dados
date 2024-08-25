@@ -1,6 +1,6 @@
 from TabelaHash import TabelaHash
 
-tabela = TabelaHash(12)
+tabela = TabelaHash(10)
 
 var = ""
 while (var != "e"):
@@ -15,24 +15,23 @@ while (var != "e"):
         tabela.consulta(palavra)
 
     elif var == "f":
-        pass
+        tabela.maisConsultada()
 
     elif var == "o":
         letra1 = input()
         letra2 = input()
-        pass
+        tabela.imprimirOrdemAlfabetica(letra1, letra2)
 
     elif var == "r":
         palavra = input()
-        pass
+        tabela.remover(palavra)
 
     elif var == "n": 
         nivel = input() 
-        pass
+        tabela.imprimirLista(nivel)
 
-    elif var == "t":
-        palavra = input()
-        pass
+    elif var == "p":
+        tabela.imprimirTabela()
     
     elif var == "e":
         break

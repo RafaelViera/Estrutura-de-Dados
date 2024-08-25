@@ -5,9 +5,9 @@ class NoHash:
             
 class TabelaHash:      
     def __init__(self, tamanho):
-        self.tamanhoTabela = tamanho # tamanho total
+        self.TAM_TABELA_HASH = tamanho # tamanho total
         self.numElementos = 0 # quantidada de elementos salvo na tabela
-        self.tabelaInterna = [[] for i in range(self.tamanhoTabela)]
+        self.tabelaInterna = [[] for i in range(self.TAM_TABELA_HASH)]
     
     def somaOrdemLetras(self, palavra):          
         alfabeto = [
@@ -36,7 +36,7 @@ class TabelaHash:
                     esq = meio + 1
     
     def funcaoH(self, chave): # Vulgo, função que retorna o indice p/ inserir
-        return self.somaOrdemLetras(chave) % self.tamanhoTabela
+        return self.somaOrdemLetras(chave) % self.TAM_TABELA_HASH
     
     # 1 - "i" FEITO 
     def inserir(self, palavra):
@@ -48,7 +48,7 @@ class TabelaHash:
                 print(f"palavra ja existente: {palavra}") 
                 return
         
-        # Como não saio, palavra não existe na lista
+        # Como não saiu, palavra não existe na lista
         novoElemento = NoHash(palavra)
         self.tabelaInterna[indice].append(novoElemento)
         self.numElementos += 1
@@ -102,39 +102,34 @@ class TabelaHash:
         # Filtra palavras que começam com letras entre l1 e l2, inclusive
         palavrasSelecionadas = [palavra for palavra in palavrasFiltradas if (l1 <= palavra.chave <= l2) or (l1 == palavra.chave[0] or l2 == palavra.chave[0])]
         
+        #Ordena de forma alfabetica em uma nova lista as palavras selecionadas
+        palavrasOrdenadas = sorted(palavrasSelecionadas, key=lambda x: x.chave)
+        
         print(f"palavras em ordem: ")
-        if palavrasSelecionadas:
-            for palavra in palavrasSelecionadas:
+        if palavrasOrdenadas:
+            for palavra in palavrasOrdenadas:
                 print(palavra.chave)
         else:
             print("lista vazia")
                     
-    # 5 - "r" ESTA COM ERRO NA LINHA DE REMOVER
+    # 5 - "r" PROVAVELMENTE ESTÁ CORRIGIDO 
     def remover(self, palavra):
         indiceRemover = self.funcaoH(palavra)
-        
+
+        # Verifica se a palavra está na lista
         for elemento in self.tabelaInterna[indiceRemover]:
             if elemento.chave == palavra:
-                self.tabelaInterna[indiceRemover].remove(indiceRemover)
-                self.numElementos -= 1
+                self.tabelaInterna[indiceRemover].remove(elemento)  # Removendo o elemento correto
+                self.numElementos -= 1  # Decrementa o contador de elementos
                 print(f"palavra removida: {palavra}")
                 return
-        
+
         print(f"palavra inexistente: {palavra}")
-    
-    # 5 - "r" ESTA COM ERRO 
-    def removerPalavra(self, palavra):
-        indice = self.funcaoH(palavra)
-
-        if palavra in self.tabelaInterna[indice]:
-            self.tabelaInterna[indice].remove(palavra)
-            print(f'palavra removida: {palavra}')
-            self.numElementos -= 1 
-        else:
-            print(f'palavra inexistente: {palavra}')
-
+        
     # 6 - "n" FEITO
     def imprimirLista(self, n):
+        n = int(n)
+        
         palavras = self.tabelaInterna[n]
         
         if palavras:
@@ -147,7 +142,7 @@ class TabelaHash:
     
     # 7 - "p" FEITO
     def imprimirTabela(self):
-        for i in range(self.tamanhoTabela):
+        for i in range(self.TAM_TABELA_HASH):
             print(f"{i}: ", end="")  
             palavras = self.tabelaInterna[i]
            

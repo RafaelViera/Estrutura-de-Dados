@@ -109,7 +109,7 @@ class ArvoreBinaria:
         def emOrdem(no, l1, l2):
             if no:
                 emOrdem(no.esq, l1, l2)
-                if l1 <= no.chave <= l2:
+                if (l1 <= no.chave <= l2) or (l1 == no.chave[0] or l2 == no.chave[0]):
                     ordem.inserirEmOrdem(no.chave)
                 emOrdem(no.dir, l1, l2)
 
@@ -121,7 +121,7 @@ class ArvoreBinaria:
             print("palavras em ordem:")
             ordem.imprimirLista()
 
-    # 5 FEITO
+    # 5 FEITO ERRO
     def remove(self, palavra, no=None):
         if (self.buscar(palavra) != None):
             if no == None:
