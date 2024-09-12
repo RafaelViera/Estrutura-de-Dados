@@ -10,13 +10,13 @@ TESTE
 TESTE
     
 ### Tabela Hash
-    TESTE
+TESTE
     
 ### Lista Estatica
-    TESTE
+TESTE
     
 ### Lista Simplesmente Encadeada
-    TESTE
+TESTE
     
 ### Lista Duplamente Encadeada
-    TESTE
+TESTE
