@@ -4,38 +4,35 @@ Durante a disciplina de Estruturas de Dados fiz a implementação de duas estrut
 ## Sobre a realização dos projetos 
 Programar cada uma dessas estruturas é um processo desafiador. Algumas são mais simples, enquanto outras demandam um nível maior de complexidade. Entretanto, em cada uma delas é interessante poder observar melhor o real processo de funcionamento que se esconde por tras de tantas funções e propriedades que tanto usamos ao trabalhar com linguagens de programação.
 
+Obs.: Vale resaltar que as implementações de Arvore Binárias e Tabela Hash foram pensadas para alocação de dados do tipo string, assim para alocação de outros tipos de dados as funcionalidades implementadas podem não ocorrer com o esperado. Ademais, ambas estruturas tem implementadas uma propriedade em cada nó de armazenadamento que representa o número de consultas que foram feitas sobre aquele dado armazenado naquele nó em especifico. 
+
 ## Estruturas Implementadas
 
 ### Árvores Binárias
 Descrição: Estruturas de dados onde cada nó pode ter no máximo dois filhos, facilitando operações como busca, inserção e remoção.
-Implementações:
-Métodos disponíveis: inserção, remoção, travessias (pré, in, pós).
+Métodos disponíveis: inserirPalavra, consultarPalavra, palavrasMaisConsultadas, removerPalavra e outras.
 Complexidade de tempo: As operações de busca, inserção e remoção podem ser realizadas em tempo O(log n) em média, em uma árvore balanceada.
 Casos de uso: Ideal para representação hierárquica de dados, como em sistemas de arquivos.
 
 ### Tabela Hash
 Descrição: Estruturas que permitem o armazenamento e a recuperação eficiente de dados, utilizando uma função hash.
-Implementações:
-Métodos disponíveis: inserção, busca, remoção com tratamento de colisões (técnicas utilizadas).
+Métodos disponíveis: inserir, consultas, maisConsultada, imprimirTabela e outras.
 Complexidade de tempo: A operação de busca é, em média, O(1) com uma boa função hash.
 Casos de uso: Usada em bancos de dados, caches e sistemas que requerem acesso rápido a dados.
 
 ### Lista Estática
 Descrição: Estruturas de dados que utilizam um array de tamanho fixo.
-Implementações:
-Operações implementadas: inserção, remoção e busca.
+Métodos: inserção, remoção e consulta.
 Vantagens: Acesso direto por índice rápido, mas tamanho fixo limita a flexibilidade.
 
 ### Lista Simplesmente Encadeada
 Descrição: Estrutura onde cada elemento aponta para o próximo, permitindo um funcionamento dinâmico.
-Implementações:
-Métodos: inserção no início, fim, remoção e busca.
+Métodos: inserção, remoção e consulta.
 Vantagens: Tamanho dinâmico, fácil inserção e remoção.
 
 ### Lista Duplamente Encadeada
 Descrição: Estrutura semelhante à lista simplesmente encadeada, mas com ponteiros para o próximo e o anterior.
-Implementações:
-Métodos: inserção e remoção em qualquer posição.
+Métodos: inserção, remoção e consulta.
 Vantagens: Navegação fácil em ambas as direções.
 
 ## Conclusão
