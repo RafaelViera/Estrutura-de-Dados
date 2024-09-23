@@ -30,3 +30,12 @@ class ListaEstatica:
                 self.nelems -= 1
             cont= cont + 1
         return False
+    
+    def imprimir(self):
+        if ( self.nelems == 0):
+            return False
+        cont = 0
+        while ( cont <= self.nelems):
+            print(self.dados[cont])
+            cont = cont + 1
+        return True

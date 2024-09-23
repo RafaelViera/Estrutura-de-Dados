@@ -154,10 +154,6 @@ class ArvoreBinaria:
             node = node.dir
         return node.chave
 
-    # 6 TENTEI, PROFESSOR, AI ME CANSEI, entretanto, TENTEI
-    def listarPalavrasNivel(self, nivel):
-        pass
-
     # 7 FEITO
     def listarCaminho(self, palavra):
         caminho = ListaSimplesmente()
