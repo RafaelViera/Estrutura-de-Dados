@@ -9,31 +9,10 @@ Obs.: Vale resaltar que as implementações de Arvore Binárias e Tabela Hash fo
 ## Estruturas Implementadas
 
 ### Árvores Binárias
-Descrição: Estruturas de dados onde cada nó pode ter no máximo dois filhos, facilitando operações como busca, inserção e remoção.
-Métodos disponíveis: inserirPalavra, consultarPalavra, palavrasMaisConsultadas, removerPalavra e outras.
-Complexidade de tempo: As operações de busca, inserção e remoção podem ser realizadas em tempo O(log n) em média, em uma árvore balanceada.
-Casos de uso: Ideal para representação hierárquica de dados, como em sistemas de arquivos.
-
 ### Tabela Hash
-Descrição: Estruturas que permitem o armazenamento e a recuperação eficiente de dados, utilizando uma função hash.
-Métodos disponíveis: inserir, consultas, maisConsultada, imprimirTabela e outras.
-Complexidade de tempo: A operação de busca é, em média, O(1) com uma boa função hash.
-Casos de uso: Usada em bancos de dados, caches e sistemas que requerem acesso rápido a dados.
-
 ### Lista Estática
-Descrição: Estruturas de dados que utilizam um array de tamanho fixo.
-Métodos: inserção, remoção e consulta.
-Vantagens: Acesso direto por índice rápido, mas tamanho fixo limita a flexibilidade.
-
 ### Lista Simplesmente Encadeada
-Descrição: Estrutura onde cada elemento aponta para o próximo, permitindo um funcionamento dinâmico.
-Métodos: inserção, remoção e consulta.
-Vantagens: Tamanho dinâmico, fácil inserção e remoção.
-
 ### Lista Duplamente Encadeada
-Descrição: Estrutura semelhante à lista simplesmente encadeada, mas com ponteiros para o próximo e o anterior.
-Métodos: inserção, remoção e consulta.
-Vantagens: Navegação fácil em ambas as direções.
 
 ## Conclusão
 Neste repositório, não apenas compartilho as implementações das estruturas de dados, mas também minhas reflexões sobre o aprendizado durante todo o processo de desenvolvimento. Cada estrutura retrata não só conhecimento técnico, mas também a evolução na forma de resolver problemas.
