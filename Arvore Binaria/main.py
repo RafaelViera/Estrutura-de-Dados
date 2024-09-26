@@ -1,4 +1,3 @@
-from ArvoreBinaria import No
 from ArvoreBinaria import ArvoreBinaria
 
 arvore = ArvoreBinaria()
@@ -25,11 +24,7 @@ while (var != "e"):
 
     elif var == "r":
         palavra = input()
-        arvore.remove(palavra)
-
-    elif var == "n": 
-        nivel = input() 
-        arvore.listarPalavrasNivel(nivel)
+        arvore.remover(palavra)
 
     elif var == "t":
         palavra = input()

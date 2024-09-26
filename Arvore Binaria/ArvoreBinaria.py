@@ -18,7 +18,6 @@ class ArvoreBinaria:
         else:
             self.raiz = None
 
-    # 1 FEITO
     def inserirPalavra(self, palavra):
         if (self.buscar(palavra) is None):
             pai = None
@@ -29,37 +28,33 @@ class ArvoreBinaria:
                     aux = aux.esq
                 else:
                     aux = aux.dir
-            novoNo = No(palavra)
-            novoNo.numConsultas = 0 
             if pai is None:
-                self.raiz = novoNo
+                self.raiz = No(palavra)
             elif palavra < pai.chave:
-                pai.esq = novoNo
+                pai.esq = No(palavra)
             else:
-                pai.dir = novoNo
+                pai.dir = No(palavra)
             print(f"palavra inserida: {palavra}")
         else:
             print(f"palavra ja existente: {palavra}")
 
-    # 2 FEITO
     def consultarPalavra(self, dado): 
         if self.raiz == None:
-            return None 
+            return False
         if (self.buscar(dado) is None):
             print(f"palavra inexistente: {dado}")
+            return False
         else:
-            pont = self.raiz # começa a procurar desde raiz
-            while (pont.chave != dado): # enquanto nao encontrou
+            pont = self.raiz 
+            while (pont.chave != dado): 
                 if dado < pont.chave:
-                    pont = pont.esq # caminha para esquerda
+                    pont = pont.esq 
                 else:
-                    pont = pont.dir # caminha para direita
-                if pont == None:
-                    print("palavra inexistente: " + dado)
-                    # encontrou uma folha -> sai
-            pont.numConsultas += 1 # terminou o while e chegou aqui é pq encontrou item   
+                    pont = pont.dir 
+            pont.numConsultas += 1 # terminou o while já encontrou item   
             print(f"palavra existente: {dado} {pont.numConsultas}")
-              
+            return True
+         
     def buscar(self, chave):
         if self.raiz == None:
             return None 
@@ -72,8 +67,7 @@ class ArvoreBinaria:
             if atual == None:
                 return None 
         return atual  
-
-    # 3 FEITO
+    
     def palavrasMaisConsultadas(self):
         if (self.raiz is None):
             print("arvore vazia")
@@ -102,7 +96,6 @@ class ArvoreBinaria:
         palavras.imprimirLista()
         print(f"numero de acessos: {maxConsultas}")
 
-    # 4 FEITO
     def ordemAlfabetica(self, l1, l2):
         ordem = ListaSimplesmente()
 
@@ -121,31 +114,32 @@ class ArvoreBinaria:
             print("palavras em ordem:")
             ordem.imprimirLista()
 
-    # 5 FEITO ERRO
-    def remove(self, palavra, no=None):
-        if (self.buscar(palavra) != None):
-            if no == None:
-                no = self.raiz
-            if no is None:
-                return no
-            if palavra < no.chave:
-                no.esq = self.remove(palavra, no.esq)
-                print(f"palavra removida: {palavra}")
-            elif palavra > no.chave:
-                no.dir = self.remove(palavra, no.dir)
-                print(f"palavra removida: {palavra}")
-            else:
-                if no.esq is None:
-                    return no.dir
-                elif no.dir is None:
-                    return no.esq
-                else:
-                    substitute = self.min(no.dir)
-                    no.chave = substitute
-                    no.chave = self.remove(substitute, no.dir) 
-                    print(f"palavra removida: {palavra}")
+    def remover(self, palavra):
+        no = self.buscar(palavra)
+        if no is None:
+            print(f'palavra inexistente: {palavra}')
         else:
-            print(f"palavra inexistente: {palavra}")
+            self.raiz = self._remover(self.raiz, palavra)
+            print(f'palavra removida: {palavra}')
+
+    def _remover(self, no, palavra):
+        if no is None:
+            return no
+
+        if palavra < no.chave:
+            no.esq = self._remover(no.esq, palavra)
+        elif palavra > no.chave:
+            no.dir = self._remover(no.dir, palavra)
+        else:
+            if no.esq is None:
+                return no.dir
+            elif no.dir is None:
+                return no.esq
+            aux = self.minNo(no.dir)
+            no.chave = aux.chave
+            no.numConsultas = aux.numConsultas
+            no.dir = self._remover(no.dir, no.chave)
+        return no
 
     def min(self, node=None):
         if node == None:
@@ -153,15 +147,20 @@ class ArvoreBinaria:
         while node.esq:
             node = node.dir
         return node.chave
+    
+    def minNo(self, no):
+        aux = no
+        while aux.esq is not None:
+            aux = aux.esq
+        return aux
 
-    # 7 FEITO
     def listarCaminho(self, palavra):
         caminho = ListaSimplesmente()
         existe = self._listarCaminho(self.raiz, palavra, caminho)
         
         if existe:
             print("Palavras no caminho:")
-            caminho.imprimirSequencia()
+            caminho.imprimirLista()
         else:
             print(f"Palavra inexistente: {palavra}")
 
@@ -179,7 +178,6 @@ class ArvoreBinaria:
                 return True
         return False
 
-    # 8 FEITO
     def imprimirArvore(self):
         if self.raiz is None:
             print("arvore vazia")
@@ -188,7 +186,6 @@ class ArvoreBinaria:
 
     def _imprimirArvore(self, no):
         if (no is not None):
-            
             if (no.esq is not None):
                 esq_str = no.esq.chave
             else:

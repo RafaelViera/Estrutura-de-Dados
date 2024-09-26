@@ -9,42 +9,49 @@ class ListaSimplesmente:
         self.nelems= 0
 
     def inserir(self, x):
-        if (self.prim== None):
-            self.prim= NoLista(x)
-        p= self.prim
-        while (p.prox):
-            p= p.prox
-        p.prox= NoLista(x)
-        self.nelems= self.nelems + 1
+        if (self.prim != None):
+            p = self.prim
+            while (p.prox):
+                p = p.prox
+            p.prox = NoLista(x)
+        else:
+            self.prim = NoLista(x)
+        self.nelems += 1
 
     def consulta(self, x):
         p= self.prim
         i= 0
         while (p):
             if (p.chave == x):
-                return (True, i)
+                return i
             p= p.prox
             i= i + 1
-        return (False)
+        return -1
     
     def remover(self, x):
-       if ( self.prim == None): # caso a lista esteja vazia
-           return False
-       elif ( self.prim == x):  # se o elemente procurado é o primeiro da lista
-           self.prim= self.prim.prox
-           self.nelems= self.nelems - 1
-           return (True)
-       else:
-           p= self.prim.prox
-           pant= self.prim
-           while (p):
-               if ( p.chave == x):
-                   pant= p.prox
-                   p.prox= None 
-               pant= pant.prox
-               p= p.prox
-               self.nelems= self.nelems - 1
-       return (False)           # caso o elemento nem esteja na lista
+        # Caso a lista esteja vazia
+        if (self.prim == None):
+            print('entrou0')
+            return False
+        # Se o elemente procurado é o primeiro da lista
+        elif (self.prim.chave == x):
+            self.prim = self.prim.prox
+            self.nelems = self.nelems - 1
+            return True
+        else:
+            p = self.prim.prox
+            pant = self.prim
+            while (p):
+                if (p.chave == x):
+                    pant.prox = p.prox
+                    p.prox = None
+                    self.nelems= self.nelems - 1
+                    return True
+                else:
+                    pant = p
+                    p = p.prox
+        # Caso o elemento nem esteja na lista
+        return (False)
     
     
     ### Funções de apoio a classe Arvore Binaria ###
@@ -61,15 +68,9 @@ class ListaSimplesmente:
             novoNo.prox = atual.prox
             atual.prox = novoNo    
         self.nelems += 1
-
-    def imprimirSequencia(self):
-        atual = self.prim
-        while (atual is not None):
-            print(atual.chave)
-            atual = atual.prox
             
     def imprimirLista(self):
         p = self.prim
-        while p:
+        while (p != None):
             print(p.chave)
             p = p.prox
